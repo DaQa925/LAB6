@@ -3,25 +3,33 @@
 <div class="container clearfix">
 
   <hr>
-  <form class="col-4">
+  <form [formGroup]="form" class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav" >
     <div class="form-group">
-      <label for="exampleInputEmail1">Imię</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Wprowadź imię">
+      <label class="sr-only" for="exampleInputEmail1">Email address</label>
+      <input [(ngModel)="credentials.login" formControlName="login" name = "login" type="email" class="form-control" id ="exampleInputEmail1" placeholder="Adres email">
+      <div *ngIf="login.touched && login.invalid" class="alert alert-danger" required> Login jest wymagany !!
+      </div>
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Nazwisko</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Wprowadź nazwisko">
+      <label class="sr-only" for="exampleInputPassword">Password</label>
+      <input [(ngModel)]="credentials.password" formControlName="password" name="password" type="password" class="form-control" id="exampleInputPassword" placeholder="Hasło">
+      <div *ngIf="password.touched && password.invalid" class="alert alert-danger" required> Hasło jest wymagane !
+      </div>
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Wprowadź adres email">
+      <label for="exampleInputName">Imię</label>
+      <input type="text" class="form-control" id="exampleInputName" placeholder="Wprowadź imię">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputSurname">Nazwisko</label>
+      <input type="text" class="form-control" id="exampleInputSurname" placeholder="Wprowadź nazwisko">
     </div>
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Kobieta</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option1">
       <label class="form-check-label" for="inlineCheckbox1">Mężczyzna</label>
     </div>
     <div class="form-group">
@@ -38,6 +46,10 @@
         <option selected>Panna/kawaler</option>
         <option>Panna</option>
         <option>Kawaler</option>
+        <option>Mężatka</option>
+        <option>Żonaty</option>
+        <option>Wdowa</option>
+        <option>Wdowiec</option>
       </select>
     </div>
     <button type="reset" class="btn btn-primary">Wyczyść</button>
